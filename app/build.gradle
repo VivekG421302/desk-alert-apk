@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.deskalert.trigger'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.deskalert.trigger"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        // No ndk { abiFilters } here: the app has no native code, so nothing is ABI-specific.
+    }
+
+    // Universal APK: no ABI/density/language splits, so one APK works on every device.
+    splits {
+        abi { enable false }
+        density { enable false }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+}
